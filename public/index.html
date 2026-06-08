@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electron Calculator</title>
+  <style>
+    body { background:#2b2b2b; color:#fff; font-family:Arial, sans-serif; margin:0; display:flex; flex-direction:column; height:100vh; }
+    #calc { flex:1; padding:20px; display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; }
+    button { font-size:1.2rem; padding:15px; background:#3e3e3e; border:none; color:#fff; border-radius:5px; cursor:pointer; }
+    button:hover { background:#555; }
+    #display { font-size:2rem; text-align:right; padding:10px; margin-bottom:10px; background:#1e1e1e; border-radius:5px; width:100%; }
+    #history { flex:0 0 150px; overflow-y:auto; padding:10px; background:#1e1e1e; border-radius:5px; margin-top:10px; }
+    #graph { flex:1; margin-top:10px; }
+    .hidden { display:none; }
+    .advanced-mode { margin-top:10px; }
+  </style>
+</head>
+<body>
+  <div id="calc">
+    <div id="display">0</div>
+    <div id="buttons"></div>
+    <div class="advanced-mode">
+      <label for="advanced-toggle">Advanced</label>
+      <input type="checkbox" id="advanced-toggle" class="hidden">
+      <div id="advanced-buttons">
+        <button data-op="sin">sin</button>
+        <button data-op="cos">cos</button>
+        <button data-op="tan">tan</button>
+        <button data-op="sqrt">√</button>
+        <button data-op="^">^</button>
+     <button data-op="%">%</button>
+     </div>
+   <button id="clear-history" class="advanced-mode" style="margin-top:10px;">Clear History</button>
+    <button id="reset" class="advanced-mode" style="margin-top:10px;">Reset</button>
+   </div>
+    <div id="history"></div>
+    <canvas id="graph" width="300" height="150"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../src/renderer.js"></script>
+</body>
+</html>

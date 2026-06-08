@@ -1,23 +1,25 @@
 # OpenCode Persistent State
 
 ## 1. Current Project Status
-- Migration complete: vanilla JS calculator -> React+TypeScript+Electron app
-- All TypeScript checks pass
-- Components built: Display, ButtonGrid, HistoryPanel, GraphView, ModeToggle
-- Headless logic: useCalculator hook (math.js powered), graphData utility
-- Secure Electron: contextIsolation=true, nodeIntegration=false, preload.ts
+- React+TS+Electron calculator app with scientific functions and dynamic graphing
+- All TypeScript checks pass, Vite build succeeds, AppImage built (109MB)
+- Components: Display, ButtonGrid, HistoryPanel, GraphView, ModeToggle
+- Headless: useCalculator hook (math.js), graphData utility
+- Secure Electron: contextIsolation, preload, no nodeIntegration
 
 ## 2. Completed Tasks
-- Phase 1: Git init, package.json, Vite/TS/Tailwind config, npm install
-- Phase 2: useCalculator hook + graphData utils
-- Phase 3: React UI components (slate theme, Tailwind, Lucide icons, Recharts)
-- Phase 4: Electron main.ts + preload.ts (secure config)
-- Phase 5: TypeScript verification, cleanup old files
+- [x] Phase 1: Git init, Vite/TS/Tailwind/PostCSS config, npm install
+- [x] Phase 2: useCalculator hook + graphData utilities
+- [x] Phase 3: React UI components (slate theme, Tailwind, Lucide, Recharts)
+- [x] Phase 4: Secure Electron main/preload (TS)
+- [x] Phase 5: TS verification, old file cleanup
+- [x] Phase 6: electron-builder config, AppImage build (109MB, valid ELF64)
+- [x] Phase 7: postcss ESM warning fix
 
 ## 3. Specific Technical Blockers
 - (none)
 
 ## 4. The Next 3 Immediate Steps
-1. Run `npm run dev` to test the app in browser and Electron
-2. Test scientific functions and graph rendering
-3. Package with electron-builder if deployment needed
+1. Run final verification: `tsc --noEmit` and `vite build`
+2. Commit all remaining changes
+3. Mark project complete

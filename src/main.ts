@@ -24,7 +24,7 @@ function createWindow(): BrowserWindow {
       nodeIntegration: false,
       contextIsolation: true,
       preload: join(__dirname, 'preload.js'),
-      sandbox: false,
+      sandbox: true,
     },
   });
 

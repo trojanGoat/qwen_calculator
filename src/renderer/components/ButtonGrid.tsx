@@ -1,21 +1,22 @@
 import { Delete } from 'lucide-react';
+import { playDTMF } from '@/utils/dtmf';
 
 interface ButtonProps {
   label: string;
   onClick: () => void;
-  variant?: 'default' | 'primary' | 'accent' | 'danger';
+  variant?: 'default' | 'operator' | 'danger' | 'scientific';
   span?: number;
   icon?: React.ReactNode;
 }
 
 export function CalcButton({ label, onClick, variant = 'default', span = 1, icon }: ButtonProps) {
-  const base = 'flex items-center justify-center rounded-xl font-medium transition-all duration-150 active:scale-95 select-none h-14 text-base';
+  const base = 'flex items-center justify-center retro-btn select-none h-14 text-base';
 
   const variants = {
-    default: 'bg-secondary text-foreground hover:bg-accent',
-    primary: 'bg-primary text-primary-foreground hover:opacity-90',
-    accent: 'bg-muted text-primary hover:bg-accent',
-    danger: 'bg-destructive/20 text-destructive hover:bg-destructive/30',
+    default: '',
+    operator: 'retro-btn-op',
+    danger: 'retro-btn-red',
+    scientific: 'retro-btn-sci',
   };
 
   return (
@@ -57,22 +58,22 @@ export function ButtonGrid({
     <div className="flex flex-col gap-2">
       {showAdvanced && (
         <div className="grid grid-cols-4 gap-2 mb-1">
-          <CalcButton label="sin" onClick={() => onFunction('sin')} variant="accent" />
-          <CalcButton label="cos" onClick={() => onFunction('cos')} variant="accent" />
-          <CalcButton label="tan" onClick={() => onFunction('tan')} variant="accent" />
-          <CalcButton label="log" onClick={() => onFunction('log')} variant="accent" />
-          <CalcButton label="ln" onClick={() => onFunction('ln')} variant="accent" />
-          <CalcButton label="√" onClick={() => onFunction('sqrt')} variant="accent" />
-          <CalcButton label="x²" onClick={() => onFunction('x^2')} variant="accent" />
-          <CalcButton label="x³" onClick={() => onFunction('x^3')} variant="accent" />
-          <CalcButton label="xⁿ" onClick={onPower} variant="accent" />
-          <CalcButton label="1/x" onClick={() => onFunction('1/x')} variant="accent" />
-          <CalcButton label="|x|" onClick={() => onFunction('abs')} variant="accent" />
-          <CalcButton label="n!" onClick={() => onFunction('fact')} variant="accent" />
-          <CalcButton label="π" onClick={() => onFunction('pi')} variant="accent" />
-          <CalcButton label="e" onClick={() => onFunction('e')} variant="accent" />
-          <CalcButton label="eˣ" onClick={() => onFunction('exp')} variant="accent" />
-          <CalcButton label="%" onClick={onPercent} variant="accent" />
+          <CalcButton label="sin" onClick={() => onFunction('sin')} variant="scientific" />
+          <CalcButton label="cos" onClick={() => onFunction('cos')} variant="scientific" />
+          <CalcButton label="tan" onClick={() => onFunction('tan')} variant="scientific" />
+          <CalcButton label="log" onClick={() => onFunction('log')} variant="scientific" />
+          <CalcButton label="ln" onClick={() => onFunction('ln')} variant="scientific" />
+          <CalcButton label="√" onClick={() => onFunction('sqrt')} variant="scientific" />
+          <CalcButton label="x²" onClick={() => onFunction('x^2')} variant="scientific" />
+          <CalcButton label="x³" onClick={() => onFunction('x^3')} variant="scientific" />
+          <CalcButton label="xⁿ" onClick={onPower} variant="scientific" />
+          <CalcButton label="1/x" onClick={() => onFunction('1/x')} variant="scientific" />
+          <CalcButton label="|x|" onClick={() => onFunction('abs')} variant="scientific" />
+          <CalcButton label="n!" onClick={() => onFunction('fact')} variant="scientific" />
+          <CalcButton label="π" onClick={() => onFunction('pi')} variant="scientific" />
+          <CalcButton label="e" onClick={() => onFunction('e')} variant="scientific" />
+          <CalcButton label="eˣ" onClick={() => onFunction('exp')} variant="scientific" />
+          <CalcButton label="%" onClick={onPercent} variant="scientific" />
         </div>
       )}
 
@@ -80,26 +81,26 @@ export function ButtonGrid({
         <CalcButton label="C" onClick={onClear} variant="danger" />
         <CalcButton label="CE" onClick={onClearEntry} variant="danger" />
         <CalcButton label="⌫" onClick={onBackspace} variant="danger" icon={<Delete className="w-5 h-5" />} />
-        <CalcButton label="÷" onClick={() => onOperator('/')} variant="primary" />
+        <CalcButton label="÷" onClick={() => onOperator('/')} variant="operator" />
 
-        <CalcButton label="7" onClick={() => onDigit('7')} />
-        <CalcButton label="8" onClick={() => onDigit('8')} />
-        <CalcButton label="9" onClick={() => onDigit('9')} />
-        <CalcButton label="×" onClick={() => onOperator('*')} variant="primary" />
+        <CalcButton label="7" onClick={() => { playDTMF('7'); onDigit('7'); }} />
+        <CalcButton label="8" onClick={() => { playDTMF('8'); onDigit('8'); }} />
+        <CalcButton label="9" onClick={() => { playDTMF('9'); onDigit('9'); }} />
+        <CalcButton label="×" onClick={() => onOperator('*')} variant="operator" />
 
-        <CalcButton label="4" onClick={() => onDigit('4')} />
-        <CalcButton label="5" onClick={() => onDigit('5')} />
-        <CalcButton label="6" onClick={() => onDigit('6')} />
-        <CalcButton label="-" onClick={() => onOperator('-')} variant="primary" />
+        <CalcButton label="4" onClick={() => { playDTMF('4'); onDigit('4'); }} />
+        <CalcButton label="5" onClick={() => { playDTMF('5'); onDigit('5'); }} />
+        <CalcButton label="6" onClick={() => { playDTMF('6'); onDigit('6'); }} />
+        <CalcButton label="-" onClick={() => onOperator('-')} variant="operator" />
 
-        <CalcButton label="1" onClick={() => onDigit('1')} />
-        <CalcButton label="2" onClick={() => onDigit('2')} />
-        <CalcButton label="3" onClick={() => onDigit('3')} />
-        <CalcButton label="+" onClick={() => onOperator('+')} variant="primary" />
+        <CalcButton label="1" onClick={() => { playDTMF('1'); onDigit('1'); }} />
+        <CalcButton label="2" onClick={() => { playDTMF('2'); onDigit('2'); }} />
+        <CalcButton label="3" onClick={() => { playDTMF('3'); onDigit('3'); }} />
+        <CalcButton label="+" onClick={() => onOperator('+')} variant="operator" />
 
-        <CalcButton label="0" onClick={() => onDigit('0')} span={2} />
+        <CalcButton label="0" onClick={() => { playDTMF('0'); onDigit('0'); }} span={2} />
         <CalcButton label="." onClick={() => onDigit('.')} />
-        <CalcButton label="=" onClick={onCalculate} variant="primary" />
+        <CalcButton label="=" onClick={onCalculate} variant="operator" />
       </div>
     </div>
   );

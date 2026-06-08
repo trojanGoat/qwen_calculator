@@ -8,6 +8,8 @@ const __dirname = dirname(__filename);
 
 const isDev = process.env.NODE_ENV === 'development';
 
+let winRef: BrowserWindow | null = null;
+
 function createWindow(): BrowserWindow {
   const win = new BrowserWindow({
     width: 480,
@@ -15,8 +17,9 @@ function createWindow(): BrowserWindow {
     resizable: true,
     minWidth: 360,
     minHeight: 500,
-    frame: true,
-    titleBarStyle: 'default',
+    frame: false,
+    transparent: true,
+    backgroundColor: '#00000000',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -24,6 +27,8 @@ function createWindow(): BrowserWindow {
       sandbox: false,
     },
   });
+
+  winRef = win;
 
   if (isDev) {
     win.loadURL('http://localhost:5173');
@@ -42,6 +47,23 @@ app.whenReady().then(() => {
 
   ipcMain.handle('get-window-count', () => {
     return BrowserWindow.getAllWindows().length;
+  });
+
+  ipcMain.on('minimize-window', () => {
+    if (winRef) winRef.minimize();
+  });
+
+  ipcMain.on('close-window', () => {
+    if (winRef) winRef.close();
+  });
+
+  ipcMain.on('toggle-maximize', () => {
+    if (!winRef) return;
+    if (winRef.isMaximized()) {
+      winRef.unmaximize();
+    } else {
+      winRef.maximize();
+    }
   });
 
   app.on('activate', () => {

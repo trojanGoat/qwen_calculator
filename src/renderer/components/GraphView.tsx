@@ -36,45 +36,46 @@ export function GraphView({ config, onUpdate }: GraphViewProps) {
     width = 28
   ) => (
     <div className="flex flex-col gap-0.5">
-      <label className="text-muted-foreground text-xs">{label}</label>
+      <label className="text-xs" style={{ color: 'rgba(57, 255, 20, 0.6)' }}>{label}</label>
       <input
         type="number"
         step="1"
         value={value}
         onChange={e => onChange(parseFloat(e.target.value) || 0)}
-        className={`w-${width} bg-background text-foreground rounded-lg px-2 py-1 text-sm border border-border focus:outline-none focus:ring-1 focus:ring-primary`}
+        className={`w-${width} retro-input text-sm`}
       />
     </div>
   );
 
   return (
-    <div className="bg-card rounded-xl p-4 shadow-lg mt-4">
+    <div className="oscilloscope p-4 mt-4">
       <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+        <div className="flex items-center gap-2 text-sm font-medium" style={{ color: '#39FF14' }}>
           <BarChart3 className="w-4 h-4" />
           Graph
         </div>
         <button
           onClick={() => setShowAxisControls(!showAxisControls)}
-          className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors"
+          className="transition-colors"
+          style={{ color: 'rgba(57, 255, 20, 0.5)' }}
         >
           <Settings2 className="w-4 h-4" />
         </button>
       </div>
 
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-muted-foreground text-sm">f(x) =</span>
+        <span className="text-sm" style={{ color: '#39FF14' }}>f(x) =</span>
         <input
           type="text"
           value={config.expr}
           onChange={e => onUpdate({ expr: e.target.value })}
-          className="flex-1 bg-background text-foreground rounded-lg px-3 py-1.5 text-sm font-mono border border-border focus:outline-none focus:ring-1 focus:ring-primary"
+          className="flex-1 retro-input text-sm"
           placeholder="sin(x)"
         />
       </div>
 
       {showAxisControls && (
-        <div className="grid grid-cols-4 gap-3 mb-3 p-3 bg-secondary/30 rounded-lg">
+        <div className="grid grid-cols-4 gap-3 mb-3 p-3 rounded-lg" style={{ background: 'rgba(57, 255, 20, 0.05)' }}>
           {axisInput('X min', config.xMin, v => onUpdate({ xMin: v }))}
           {axisInput('X max', config.xMax, v => onUpdate({ xMax: v }))}
           {axisInput('Y min', config.yMin, v => onUpdate({ yMin: v }))}
@@ -84,41 +85,45 @@ export function GraphView({ config, onUpdate }: GraphViewProps) {
 
       <div className="h-48">
         {isError ? (
-          <div className="h-full flex items-center justify-center text-muted-foreground text-sm">
+          <div className="h-full flex items-center justify-center text-sm" style={{ color: 'rgba(57, 255, 20, 0.5)' }}>
             Could not parse expression
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(57, 255, 20, 0.1)" />
               <XAxis
                 type="number"
                 dataKey="x"
-                stroke="#94a3b8"
+                stroke="rgba(57, 255, 20, 0.4)"
                 fontSize={11}
                 domain={[config.xMin, config.xMax]}
                 tickCount={8}
+                tick={{ fill: 'rgba(57, 255, 20, 0.5)' }}
               />
               <YAxis
                 type="number"
                 dataKey="y"
-                stroke="#94a3b8"
+                stroke="rgba(57, 255, 20, 0.4)"
                 fontSize={11}
                 domain={[yMin, yMax]}
+                tick={{ fill: 'rgba(57, 255, 20, 0.5)' }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b',
-                  border: '1px solid #334155',
-                  borderRadius: '8px',
+                  backgroundColor: '#0D1F0D',
+                  border: '1px solid rgba(57, 255, 20, 0.3)',
+                  borderRadius: '6px',
                   fontSize: '12px',
+                  fontFamily: "'Share Tech Mono', monospace",
                 }}
-                labelStyle={{ color: '#94a3b8' }}
+                labelStyle={{ color: 'rgba(57, 255, 20, 0.6)' }}
+                itemStyle={{ color: '#39FF14' }}
               />
               <Line
                 type="monotone"
                 dataKey="y"
-                stroke="#3b82f6"
+                stroke="#39FF14"
                 strokeWidth={2}
                 dot={false}
                 isAnimationActive={false}

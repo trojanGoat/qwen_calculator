@@ -13,6 +13,229 @@
   }
 }
 
+/* Retro calculator body */
+.calc-body {
+  background: linear-gradient(145deg, #F8F4EC, #EDE7D8);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow:
+    0 8px 0 0 #D4C8B4,
+    0 12px 24px rgba(0,0,0,0.15),
+    inset 0 1px 0 0 rgba(255,255,255,0.8);
+  position: relative;
+}
+
+/* Retro button base */
+.retro-btn {
+  position: relative;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.08s ease;
+  transform: translateY(0);
+  background: linear-gradient(180deg, #4A4A4A, #3D3D3D);
+  box-shadow: 0 3px 0 0 #2A2A2A, 0 4px 6px rgba(0,0,0,0.2);
+  color: #F5F0E8;
+}
+
+.retro-btn:hover {
+  background: linear-gradient(180deg, #555555, #4A4A4A);
+}
+
+.retro-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 #2A2A2A, 0 2px 3px rgba(0,0,0,0.15);
+}
+
+/* Red clear button */
+.retro-btn-red {
+  background: linear-gradient(180deg, #E04040, #CC3333);
+  box-shadow: 0 3px 0 0 #992626, 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.retro-btn-red:hover {
+  background: linear-gradient(180deg, #E85050, #D04040);
+}
+
+.retro-btn-red:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 #992626, 0 2px 3px rgba(0,0,0,0.15);
+}
+
+/* Operator button */
+.retro-btn-op {
+  background: linear-gradient(180deg, #6A6A6A, #5A5A5A);
+  box-shadow: 0 3px 0 0 #454545, 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.retro-btn-op:hover {
+  background: linear-gradient(180deg, #757575, #6A6A6A);
+}
+
+.retro-btn-op:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 #454545, 0 2px 3px rgba(0,0,0,0.15);
+}
+
+/* Scientific button */
+.retro-btn-sci {
+  background: linear-gradient(180deg, #4A4A4A, #3D3D3D);
+  box-shadow: 0 3px 0 0 #2A2A2A, 0 4px 6px rgba(0,0,0,0.2);
+  font-size: 0.8rem;
+}
+
+.retro-btn-sci:hover {
+  background: linear-gradient(180deg, #555555, #4A4A4A);
+}
+
+.retro-btn-sci:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 #2A2A2A, 0 2px 3px rgba(0,0,0,0.15);
+}
+
+/* LED display */
+.led-display {
+  background: #1A2B1A;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,0.6),
+    inset 0 1px 2px rgba(0,0,0,0.4),
+    0 1px 0 0 rgba(255,255,255,0.5);
+  border: 3px solid #E0D8C8;
+}
+
+.led-text {
+  color: #39FF14;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow:
+    0 0 4px rgba(57, 255, 20, 0.8),
+    0 0 8px rgba(57, 255, 20, 0.5),
+    0 0 16px rgba(57, 255, 20, 0.3);
+}
+
+.led-text-dim {
+  color: #2DCC0D;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow:
+    0 0 3px rgba(45, 204, 13, 0.6),
+    0 0 6px rgba(45, 204, 13, 0.3);
+  opacity: 0.7;
+}
+
+/* Oscilloscope graph */
+.oscilloscope {
+  background: #0D1F0D;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,0.8),
+    0 1px 0 0 rgba(255,255,255,0.5);
+  border: 3px solid #E0D8C8;
+}
+
+.oscilloscope-grid {
+  stroke: rgba(57, 255, 20, 0.15);
+}
+
+.oscilloscope-axis {
+  stroke: rgba(57, 255, 20, 0.3);
+  color: rgba(57, 255, 20, 0.5);
+}
+
+.oscilloscope-line {
+  stroke: #39FF14;
+  filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.6));
+}
+
+/* Retro toggle switch */
+.retro-toggle {
+  display: flex;
+  gap: 0.25rem;
+  background: #E8E0D0;
+  border-radius: 2rem;
+  padding: 0.25rem;
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.15),
+    0 1px 0 0 rgba(255,255,255,0.5);
+}
+
+.retro-toggle-btn {
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 1rem;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.retro-toggle-btn-active {
+  background: #4A4A4A;
+  color: #F5F0E8;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.retro-toggle-btn-inactive {
+  background: transparent;
+  color: #8B8070;
+}
+
+.retro-toggle-btn-inactive:hover {
+  color: #4A4A4A;
+}
+
+/* Retro input */
+.retro-input {
+  background: #1A2B1A;
+  border: 2px solid #E0D8C8;
+  border-radius: 0.5rem;
+  color: #39FF14;
+  font-family: 'Share Tech Mono', monospace;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  box-shadow:
+    inset 0 1px 4px rgba(0,0,0,0.5),
+    0 1px 0 0 rgba(255,255,255,0.5);
+}
+
+.retro-input:focus {
+  outline: none;
+  border-color: #39FF14;
+  box-shadow:
+    inset 0 1px 4px rgba(0,0,0,0.5),
+    0 0 8px rgba(57, 255, 20, 0.3),
+    0 1px 0 0 rgba(255,255,255,0.5);
+}
+
+.retro-input::placeholder {
+  color: rgba(57, 255, 20, 0.3);
+}
+
+/* Retro history */
+.retro-history {
+  background: linear-gradient(145deg, #F0EBE0, #E8E0D0);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow:
+    0 4px 0 0 #D4C8B4,
+    0 6px 12px rgba(0,0,0,0.1);
+}
+
+.retro-history-item {
+  background: #EDE7D8;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.retro-history-item:hover {
+  background: #E8E0D0;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -20,9 +243,160 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(215 25% 27%);
+  background: #D4C8B4;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(215 25% 35%);
+  background: #B8B0A0;
+}
+
+/* Branding */
+.branding {
+  color: #8B8070;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.branding-sound {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #4A4A4A;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+
+/* Drag region - invisible area for dragging frameless window */
+.drag-region {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  -webkit-app-region: drag;
+}
+
+/* Window controls */
+.win-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 0.375rem;
+  border: none;
+  background: transparent;
+  color: #8B8070;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.win-btn:hover {
+  background: rgba(139, 128, 112, 0.15);
+  color: #4A4A4A;
+}
+
+.win-btn-close:hover {
+  background: rgba(224, 64, 64, 0.15);
+  color: #CC3333;
+}
+
+/* Mode toggle - single button */
+.retro-mode-toggle {
+  width: 28px;
+  height: 28px;
+  border-radius: 0.5rem;
+  border: 1.5px solid #D4C8B4;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Share Tech Mono', monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #EDE7D8;
+  color: #8B8070;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retro-mode-toggle:hover {
+  border-color: #B8B0A0;
+  background: #E8E0D0;
+}
+
+.retro-mode-toggle.mode-sci {
+  background: #4A4A4A;
+  color: #39FF14;
+  border-color: #39FF14;
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.3);
+}
+
+.retro-mode-toggle.mode-sci:hover {
+  background: #555555;
+}
+
+/* LED History button */
+.led-h-btn {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  background: rgba(26, 43, 26, 0.8);
+  color: #2DCC0D;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.led-h-btn:hover {
+  background: rgba(57, 255, 20, 0.15);
+  color: #39FF14;
+  border-color: #39FF14;
+}
+
+/* LED History view */
+.led-history-view {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* LED navigation buttons */
+.led-nav-btn {
+  width: 28px;
+  height: 24px;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  background: rgba(26, 43, 26, 0.8);
+  color: #39FF14;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.led-nav-btn:hover:not(:disabled) {
+  background: rgba(57, 255, 20, 0.15);
+  border-color: #39FF14;
+}
+
+.led-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
 }

@@ -32,6 +32,8 @@ export function useCalculator() {
   const [isNewNumber, setIsNewNumber] = useState(true);
   const [pendingOp, setPendingOp] = useState<string | null>(null);
   const [pendingValue, setPendingValue] = useState<number | null>(null);
+  const [showHistory, setShowHistory] = useState(false);
+  const [historyIndex, setHistoryIndex] = useState(0);
 
   const nextId = useMemo(() => history.length + Date.now(), [history]);
 
@@ -194,6 +196,27 @@ export function useCalculator() {
     setHistory([]);
   }, []);
 
+  const toggleShowHistory = useCallback(() => {
+    setShowHistory(prev => {
+      if (!prev) setHistoryIndex(0);
+      return !prev;
+    });
+  }, []);
+
+  const cycleHistory = useCallback((dir: 'up' | 'down') => {
+    setHistoryIndex(prev => {
+      if (history.length === 0) return 0;
+      if (dir === 'up') {
+        return prev > 0 ? prev - 1 : 0;
+      }
+      return prev < history.length - 1 ? prev + 1 : history.length - 1;
+    });
+  }, [history.length]);
+
+  const currentHistoryEntry = history.length > 0 && historyIndex >= 0 && historyIndex < history.length
+    ? history[historyIndex]
+    : null;
+
   return {
     display,
     expression,
@@ -213,5 +236,10 @@ export function useCalculator() {
     updateGraphConfig,
     useFromHistory,
     clearHistory,
+    showHistory,
+    showHistoryIndex: historyIndex,
+    currentHistoryEntry,
+    toggleShowHistory,
+    cycleHistory,
   };
 }

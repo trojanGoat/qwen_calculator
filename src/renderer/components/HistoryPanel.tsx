@@ -11,7 +11,7 @@ export function HistoryPanel({ history, onSelect, onClear }: HistoryPanelProps) 
   if (history.length === 0) return null;
 
   return (
-    <div className="bg-card rounded-xl p-4 shadow-lg mt-4 max-h-60 flex flex-col">
+    <div className="retro-history mt-4 flex flex-col">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
           <Clock className="w-4 h-4" />
@@ -25,12 +25,12 @@ export function HistoryPanel({ history, onSelect, onClear }: HistoryPanelProps) 
           Clear
         </button>
       </div>
-      <div className="overflow-y-auto flex-1 space-y-2">
+      <div className="overflow-y-auto flex-1 space-y-2 max-h-60">
         {history.map(entry => (
           <button
             key={entry.id}
             onClick={() => onSelect(entry)}
-            className="w-full text-right p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors text-sm"
+            className="retro-history-item w-full text-right"
           >
             <div className="text-muted-foreground text-xs truncate">{entry.expression}</div>
             <div className="text-foreground font-medium">= {entry.result}</div>

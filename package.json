@@ -1,6 +1,6 @@
 {
   "name": "electron-calculator",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "type": "module",
   "description": "Electron calculator app with React+TypeScript — basic arithmetic, scientific functions, expression history, and dynamic graphing.",
   "main": "dist-electron/main.js",
@@ -11,7 +11,10 @@
     "build": "tsc && vite build && electron-builder",
     "build:appimage": "tsc && vite build && electron-builder --linux AppImage",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "vite",
+    "version:patch": "node scripts/bump-version.js patch",
+    "version:minor": "node scripts/bump-version.js minor",
+    "version:major": "node scripts/bump-version.js major"
   },
   "dependencies": {
     "mathjs": "^13.0.0",
@@ -37,7 +40,7 @@
   },
   "build": {
     "appId": "com.example.electroncalculator",
-    "productName": "Electron Calculator",
+    "productName": "electron-calculator",
     "directories": {
       "output": "dist-app"
     },

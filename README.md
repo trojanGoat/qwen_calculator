@@ -1,40 +1,60 @@
 # Electron Calculator
 
-A standalone desktop calculator application built with Electron, React, and TypeScript. Features a dark theme, basic arithmetic, scientific functions (sin, cos, tan, sqrt), expression history, and a graph view (sin wave).
+A standalone desktop calculator built with React, TypeScript, and Electron. Features scientific functions, expression history, and dynamic 2D graphing.
 
 ## Features
-- Dark theme UI using Material‑UI styling
-- Basic calculator: +, -, *, /, =, clear
-- Advanced mode: sin, cos, tan, √, ^, %
-- History panel showing recent calculations
-- Graph view using Chart.js (sin function)
+
+- Basic arithmetic: +, -, *, /
+- Scientific functions: sin, cos, tan, sqrt, log, pow, %
+- Expression history panel
+- Dynamic 2D graphing with adjustable x/y axis controls
+- Slate theme UI (Tailwind CSS, shadcn-inspired)
 
 ## Technology Stack
-- **Electron** – desktop runtime
-- **React** + **TypeScript** – UI components
-- **Vite** – dev server & build tool
-- **Chart.js** – graph rendering
-- **electron‑builder** – packaging for Ubuntu
 
-## Getting Started
+- **Electron 30** — desktop runtime (secure IPC via preload)
+- **React 18** + **TypeScript** — UI components
+- **Vite 5** — dev server & build tool
+- **Tailwind CSS** — slate-themed styling
+- **math.js** — expression evaluation & scientific functions
+- **Recharts** — dynamic graphing
+- **Lucide React** — icons
+- **electron-builder** — packaging (AppImage, DMG, NSIS)
 
-```bash
-# Install dependencies
-npm install
-
-# Run in development mode (hot reload)
-npm run dev
-```
-
-The app will open a window at `http://localhost:5173` (Electron loads the UI from `public/index.html`).
-
-## Building for Production
+## Quick Start
 
 ```bash
-npm run build
+npm install          # First time setup
+npm run dev          # Dev mode with hot reload
 ```
 
-The packaged app will be created in the `dist/` folder.
+## Building & Packaging
+
+See **[BUILD.md](./BUILD.md)** for platform-specific instructions:
+
+- `npm run build:appimage` — Linux AppImage (self-contained, no install)
+- `npx electron-builder --mac` — macOS DMG (must run on Mac)
+- `npx electron-builder --win` — Windows installer (must run on Windows)
+
+## Project Structure
+
+```
+src/
+  main.ts            # Electron main process
+  preload.ts         # Secure IPC bridge
+  renderer/
+    App.tsx           # Root component
+    hooks/
+      useCalculator.ts    # Calculator state & math.js integration
+    components/
+      Display.tsx           # Expression display
+      ButtonGrid.tsx        # Basic + scientific buttons
+      HistoryPanel.tsx      # Calculation history
+      GraphView.tsx         # Recharts dynamic graph
+      ModeToggle.tsx        # Basic / scientific mode switch
+assets/
+  icon.png           # App icon
+```
 
 ## License
 

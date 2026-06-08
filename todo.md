@@ -1,25 +1,25 @@
 # OpenCode Persistent State
 
 ## 1. Current Project Status
-- React+TS+Electron calculator app with scientific functions and dynamic graphing
-- All TypeScript checks pass, Vite build succeeds, AppImage built (109MB)
-- Components: Display, ButtonGrid, HistoryPanel, GraphView, ModeToggle
-- Headless: useCalculator hook (math.js), graphData utility
-- Secure Electron: contextIsolation, preload, no nodeIntegration
+**COMPLETE** — React+TS+Electron calculator app with scientific functions, expression history, and dynamic graphing.
+- TypeScript: 0 errors
+- Vite build: succeeds (dist/, dist-electron/)
+- AppImage: built, valid ELF64, 109MB at `dist-app/Electron Calculator-2.0.0.AppImage`
 
 ## 2. Completed Tasks
 - [x] Phase 1: Git init, Vite/TS/Tailwind/PostCSS config, npm install
-- [x] Phase 2: useCalculator hook + graphData utilities
+- [x] Phase 2: useCalculator hook + graphData utilities (math.js powered)
 - [x] Phase 3: React UI components (slate theme, Tailwind, Lucide, Recharts)
-- [x] Phase 4: Secure Electron main/preload (TS)
-- [x] Phase 5: TS verification, old file cleanup
-- [x] Phase 6: electron-builder config, AppImage build (109MB, valid ELF64)
-- [x] Phase 7: postcss ESM warning fix
+- [x] Phase 4: Secure Electron main/preload (contextIsolation, preload)
+- [x] Phase 5: TS verification, legacy file cleanup
+- [x] Phase 6: electron-builder AppImage config, 109MB build
+- [x] Phase 7: postcss ESM warning fix, final verification
 
 ## 3. Specific Technical Blockers
 - (none)
 
-## 4. The Next 3 Immediate Steps
-1. Run final verification: `tsc --noEmit` and `vite build`
-2. Commit all remaining changes
-3. Mark project complete
+## 4. Project Summary
+- **Stack**: React 18, TypeScript, Vite, Tailwind CSS, math.js, Recharts, Electron 30
+- **Features**: Basic arithmetic, scientific functions (sin/cos/tan/log/etc.), expression history, dynamic 2D graphing with axis controls
+- **Security**: contextIsolation, no nodeIntegration, IPC via preload
+- **Distribution**: `npm run build:appimage` produces self-contained Linux AppImage

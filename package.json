@@ -1,39 +1,50 @@
 {
   "name": "electron-calculator",
-  "version": "1.0.0",
-  "description": "A standalone Electron calculator app with dark theme, supporting basic arithmetic and advanced modes (scientific functions, history, graph).",
-  "main": "src/main.js",
+  "version": "2.0.0",
+  "description": "Electron calculator app with React+TypeScript — basic arithmetic, scientific functions, expression history, and dynamic graphing.",
+  "main": "dist-electron/main.js",
   "author": "",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"electron .\" \"vite\"",
-    "build": "vite build && electron-builder",
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview",
     "start": "vite"
   },
   "dependencies": {
     "electron": "^30.0.0",
-    "electron-builder": "^24.13.3"
+    "mathjs": "^13.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7",
+    "lucide-react": "^0.400.0"
   },
   "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
-    "vite": "^5.2.0",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
     "typescript": "^5.4.5",
+    "vite": "^5.2.0",
+    "vite-plugin-electron": "^0.28.6",
     "@types/node": "^20.12.0"
-
   },
   "build": {
     "appId": "com.example.electroncalculator",
     "productName": "Electron Calculator",
     "directories": {
-      "app": "src"
+      "output": "dist-app"
     },
     "files": [
-      "public/**/*",
-      "src/**/*",
-      "index.html"
+      "dist/**/*",
+      "dist-electron/**/*"
     ],
     "mac": {
-      "category": "PublicUtility"
+      "category": "public.app-category.utilities"
     },
     "linux": {
       "category": "Utility"

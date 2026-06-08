@@ -1,9 +1,13 @@
 node_modules/
+dist/
+dist-electron/
+dist-app/
 __pycache__/
 *.pyc
 .env
 .DS_Store
 build/
-dist/
 coverage/
 .opencode/logs/
+*.log
+temp/

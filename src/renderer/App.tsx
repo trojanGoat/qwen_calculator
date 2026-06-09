@@ -5,7 +5,7 @@ import { ButtonGrid } from '@/components/ButtonGrid';
 import { HistoryPanel } from '@/components/HistoryPanel';
 import { GraphView } from '@/components/GraphView';
 import { ModeToggle } from '@/components/ModeToggle';
-import { WindowControls } from '@/components/WindowControls';
+import { PowerButton } from '@/components/PowerButton';
 
 export default function App() {
   const calc = useCalculator();
@@ -19,19 +19,18 @@ export default function App() {
   });
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-4 bg-background-alt">
+    <div className="flex flex-col items-center">
       <div className="w-full max-w-md">
         <div className="calc-body">
           <div className="flex items-center justify-between mb-4 px-2">
             <div className="flex items-center gap-3">
-              <div className="drag-region-branding" />
               <div className="branding">
                 <span className="branding-sound"></span>
                 RetroCalc
               </div>
             </div>
             <div className="flex items-center gap-3 -webkit-app-region-no-drag">
-              <WindowControls />
+              <PowerButton />
               <ModeToggle
                 showAdvanced={calc.showAdvanced}
                 onToggle={() => calc.setShowAdvanced(!calc.showAdvanced)}

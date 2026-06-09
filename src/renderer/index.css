@@ -270,14 +270,17 @@
   margin-right: 0.25rem;
 }
 
-/* Drag region - invisible area for dragging frameless window */
-.drag-region {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+/* Drag region - covers only branding area for dragging frameless window */
+.drag-region-branding {
   height: 36px;
+  width: 120px;
+  flex-shrink: 0;
   -webkit-app-region: drag;
+}
+
+/* No-drag region for window controls */
+.-webkit-app-region-no-drag {
+  -webkit-app-region: no-drag;
 }
 
 /* Window controls */

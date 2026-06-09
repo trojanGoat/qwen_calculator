@@ -22,13 +22,15 @@ export default function App() {
     <div className="flex flex-col items-center min-h-screen p-4 bg-background-alt">
       <div className="w-full max-w-md">
         <div className="calc-body">
-          <div className="drag-region" />
-          <div className="flex items-center justify-between mb-4 px-2 -webkit-app-region-no-drag">
-            <div className="branding">
-              <span className="branding-sound"></span>
-              RetroCalc
-            </div>
+          <div className="flex items-center justify-between mb-4 px-2">
             <div className="flex items-center gap-3">
+              <div className="drag-region-branding" />
+              <div className="branding">
+                <span className="branding-sound"></span>
+                RetroCalc
+              </div>
+            </div>
+            <div className="flex items-center gap-3 -webkit-app-region-no-drag">
               <WindowControls />
               <ModeToggle
                 showAdvanced={calc.showAdvanced}

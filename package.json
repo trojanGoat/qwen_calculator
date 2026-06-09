@@ -1,6 +1,6 @@
 {
   "name": "electron-calculator",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "type": "module",
   "description": "Electron calculator app with React+TypeScript — basic arithmetic, scientific functions, expression history, and dynamic graphing.",
   "main": "dist-electron/main.js",
@@ -52,7 +52,9 @@
       "category": "public.app-category.utilities"
     },
     "linux": {
-      "target": ["AppImage"],
+      "target": [
+        "AppImage"
+      ],
       "category": "Utility",
       "icon": "assets"
     },
